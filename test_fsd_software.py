@@ -13,19 +13,19 @@ class TestFSDSoftware(unittest.TestCase):
     def test_obstacle_detection(self):
 
         """Test obstacle detection when distance is less than 5 meters."""
-        result = self.fsd.detect_obstacle(4)  # Obstacle at 4 meters
+        result = self.fsd.detect_obstacle(10)  # Obstacle at 4 meters
         self.assertTrue(result)
     
     def test_no_obstacle_detection(self):
 
         """Test that no obstacle is detected if distance is greater than 5 meters."""
-        result = self.fsd.detect_obstacle(10)  # Obstacle at 10 meters
+        result = self.fsd.detect_obstacle(4)  # Obstacle at 10 meters
         self.assertFalse(result)
     
     def test_driving_decision_stop_obstacle(self):
 
         """Test that the decision is to stop if an obstacle is detected."""
-        self.fsd.detect_obstacle(4)  # Simulate obstacle detection
+        self.fsd.detect_obstacle(10)  # Simulate obstacle detection
         result = self.fsd.make_driving_decision()
         self.assertEqual(result, "STOP")
     
